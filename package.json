@@ -1,0 +1,52 @@
+{
+  "name": "vaals",
+  "version": "0.0.3",
+  "description": "ABOSS Design System",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ABOSSBV/vaals.git"
+  },
+  "author": "ABOSS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ABOSSBV/vaals/issues"
+  },
+  "homepage": "https://github.com/ABOSSBV/vaals#readme",
+  "main": "dist/index.js",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "prepublishOnly": "babel ./src --out-dir ./dist -s inline",
+    "storybook": "cross-env NODE_ENV=development start-storybook -p 9001 -c storybook -s ./storybook/public",
+    "build-storybook": "build-storybook -c storybook -o storybook-static -s ./storybook/public"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-options": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
+    "@storybook/theming": "^5.0.11",
+    "babel-plugin-styled-components": "^1.10.0",
+    "cross-env": "^5.2.0",
+    "eslint": "5.3.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "styled-components": "^4.2.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
+  }
+}
