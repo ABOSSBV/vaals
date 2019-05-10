@@ -1,26 +1,32 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import { Button } from 'vaals';
 
 const BasicButtons = props => {
   return (
     <Button
-      buttonValue={text('Label', 'Primary', 'Basic')}
+      content={text('Label', 'Primary', 'Basic')}
       color={select(
         'Type',
         ['primary', 'primary-gray', 'secondary', 'warning', 'positive', 'alert', 'gray'],
         'primary',
         'Basic'
       )}
-      onClick={() => {}}
-      {...props}
+      lightness={select(
+        'Lightness',
+        ['100', '200', '300', '400', '500', '600', '700', '900'],
+        '500',
+        'Basic'
+      )}
+      iconLeft={boolean('Icon Left', false, 'Basic')}
+      iconRight={boolean('Icon Right', false, 'Basic')}
     />
   );
 };
 
 const stories = storiesOf('Components|Form/Button', module);
 
-stories.addDecorator(withKnobs).add('Basic', () => <BasicButtons />, {
+stories.addDecorator(withKnobs).add('Basic', props => <BasicButtons {...props} />, {
   notes: 'Basic button, containing only text.'
 });
