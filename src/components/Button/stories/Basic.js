@@ -1,42 +1,26 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { Button } from 'vaals';
+
 const BasicButtons = props => {
   return (
-    <div>
-      <Button />
-      <Button label="Default" buttonValue="Continue" onClick={() => {}} {...props} />
-      <Button
-        label="Default"
-        buttonValue="Continue"
-        backgroundColor="primary"
-        onClick={() => {}}
-        {...props}
-      />
-      <Button
-        label="Default"
-        buttonValue="Continue"
-        backgroundColor="primary"
-        backgroundColorLightness="300"
-        onClick={() => {}}
-        {...props}
-      />
-      <Button
-        label="Default"
-        buttonValue="Continue"
-        backgroundColor="warning"
-        onClick={() => {}}
-        {...props}
-      />
-      <Button
-        label="Default"
-        buttonValue="Continue"
-        backgroundColor="alert"
-        onClick={() => {}}
-        {...props}
-      />
-    </div>
+    <Button
+      buttonValue={text('Label', 'Primary', 'Basic')}
+      color={select(
+        'Type',
+        ['primary', 'primary-gray', 'secondary', 'warning', 'positive', 'alert', 'gray'],
+        'primary',
+        'Basic'
+      )}
+      onClick={() => {}}
+      {...props}
+    />
   );
 };
 
-storiesOf('Button', module).add('Basic', () => <BasicButtons />);
+const stories = storiesOf('Components|Form/Button', module);
+
+stories.addDecorator(withKnobs).add('Basic', () => <BasicButtons />, {
+  notes: 'Basic button, containing only text.'
+});

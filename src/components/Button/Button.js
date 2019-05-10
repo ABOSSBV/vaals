@@ -2,13 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
-export const Button = ({ buttonValue, backgroundColor, backgroundColorLightness }) => {
+export const Button = ({ buttonValue, color, lightness }) => {
   return (
     <div>
-      <ABOSSButton
-        backgroundColor={backgroundColor}
-        backgroundColorLightness={backgroundColorLightness}
-      >
+      <ABOSSButton color={color} lightness={lightness}>
         {buttonValue}
       </ABOSSButton>
     </div>
@@ -16,11 +13,15 @@ export const Button = ({ buttonValue, backgroundColor, backgroundColorLightness 
 };
 
 Button.propTypes = {
-  buttonValue: propTypes.string
+  buttonValue: propTypes.string,
+  color: propTypes.string,
+  lightness: propTypes.string
 };
 
 Button.defaultProps = {
-  buttonValue: 'Default Prop Text'
+  buttonValue: 'Ok',
+  color: 'primary',
+  lightness: '500'
 };
 
 const returnBackgroundColor = (color, lightness = 500) => {
@@ -32,8 +33,8 @@ const returnBackgroundColor = (color, lightness = 500) => {
         default:
           return '#004CFF';
       }
-    case 'warning':
-      return '#FF0236';
+    case 'secondary':
+      return '#FFF704';
     case 'warning':
       return '#FF0236';
     case 'positive':
@@ -52,13 +53,17 @@ const returnBackgroundColor = (color, lightness = 500) => {
 const ABOSSButton = styled.button`
   border-radius: 5px;
   padding: 15px 25px;
-  background: ${props =>
-    returnBackgroundColor(props.backgroundColor, props.backgroundColorLightness)};
+  background: ${props => returnBackgroundColor(props.color, props.lightness)};
   border: 0;
   font-family: 'SF UI Display';
   font-size: 15px;
   font-weight: 600;
   color: ${props =>
-    props.backgroundColorLightness && props.backgroundColorLightness < 400 ? '#000719' : '#fff'};
+    (props.lightness && props.lightness < 400) || props.color === 'secondary' ? '#000719' : '#fff'};
   -webkit-font-smoothing: antialiased;
+  transition: transform 150ms ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
 `;
