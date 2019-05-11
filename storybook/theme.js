@@ -16,5 +16,7 @@ export default create({
   inputBg: 'white',
   inputBorder: 'rgba(0,0,0,.1)',
   inputTextColor: '#333333',
-  inputBorderRadius: 4
+  inputBorderRadius: 4,
+  brandImage: '/aboss-logo.png',
+  brandTitle: 'Vaals Design System'
 });
