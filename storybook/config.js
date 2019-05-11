@@ -1,5 +1,4 @@
-import { addDecorator, configure } from '@storybook/react';
-import { withOptions } from '@storybook/addon-options';
+import { addDecorator, configure, addParameters } from '@storybook/react';
 import centered from '@storybook/addon-centered/react';
 import ABOSSTheme from './theme.js';
 import React, { Fragment } from 'react';
@@ -20,10 +19,10 @@ function withGlobalStyles(storyFn) {
 }
 addDecorator(withGlobalStyles);
 addDecorator(centered);
-addDecorator(
-  withOptions({
+addParameters({
+  options: {
     theme: ABOSSTheme
-  })
-);
+  }
+});
 
 configure(loadStories, module);

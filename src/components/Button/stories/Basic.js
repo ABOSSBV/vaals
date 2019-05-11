@@ -15,8 +15,8 @@ const BasicButtons = props => {
       )}
       lightness={select(
         'Lightness',
-        ['100', '200', '300', '400', '500', '600', '700', '900'],
-        '500',
+        ['default', '100', '200', '300', '400', '500', '600', '700', '900'],
+        'default',
         'Basic'
       )}
       iconLeft={boolean('Icon Left', false, 'Basic')}
