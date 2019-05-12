@@ -8,7 +8,7 @@ export const Loading = ({ color }) => {
       viewBox="0 0 44 44"
       stroke={color || 'currentColor'}
     >
-      <g fill="none" fill-rule="evenodd" stroke-width="2">
+      <g fill="none" fill-rule="evenodd" strokeWidth="2">
         <circle cx="22" cy="22" r="1">
           <animate
             attributeName="r"

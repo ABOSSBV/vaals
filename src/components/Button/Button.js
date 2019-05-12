@@ -5,89 +5,24 @@ import styled from 'styled-components';
 import FeatherIcon from 'feather-icons-react';
 import { ThemeWrapper } from 'vaals';
 import { Loading } from '../Loading';
+import { VaalsContainerLeft, VaalsContainerRight } from './components';
 
-export const Button = ({
-  content,
-  color,
-  lightness,
-  containerLeftVisible,
-  containerLeftType,
-  containerLeftContent,
-  containerRightVisible,
-  containerRightType,
-  containerRightContent,
-  loading
-}) => {
+export const Button = props => {
   return (
     <ThemeWrapper>
-      <VaalsButton color={color} lightness={lightness}>
-        {containerLeftVisible && (
-          <VaalsButtonContainerLeft
-            color={color}
-            lightness={lightness}
-            containerLeftType={containerLeftType}
-          >
-            {loading && containerLeftVisible && (
-              <VaalsButtonLoading
-                color={color}
-                lightness={lightness}
-                container={containerLeftVisible || containerRightVisible}
-              >
-                <VaalsLoading color={color} lightness={lightness}>
-                  <Loading />
-                </VaalsLoading>
-              </VaalsButtonLoading>
-            )}
-            {containerLeftType === 'icon' && (
-              <FeatherIcon
-                icon={containerLeftContent}
-                color={(lightness && lightness < 400) || color === 'secondary' ? '#000719' : '#fff'}
-                size="18"
-              />
-            )}
-            {containerLeftType === 'text' && <div>{containerLeftContent}</div>}
-          </VaalsButtonContainerLeft>
-        )}
-        <VaalsButtonContent
-          containerLeftVisible={containerLeftVisible}
-          containerRightVisible={containerRightVisible}
-        >
-          {loading && (!containerRightVisible && !containerLeftVisible) && (
-            <VaalsButtonLoading color={color} lightness={lightness}>
-              <VaalsLoading color={color} lightness={lightness}>
+      <VaalsButton {...props}>
+        {props.containerLeftVisible && <VaalsContainerLeft {...props} />}
+        <VaalsButtonContent {...props}>
+          {props.loading && (!props.containerRightVisible && !props.containerLeftVisible) && (
+            <VaalsButtonLoading {...props}>
+              <VaalsLoading {...props}>
                 <Loading />
               </VaalsLoading>
             </VaalsButtonLoading>
           )}
-          {content}
+          {props.content}
         </VaalsButtonContent>
-        {containerRightVisible && (
-          <VaalsButtonContainerRight
-            color={color}
-            lightness={lightness}
-            containerRightType={containerRightType}
-          >
-            {loading && containerRightVisible && (
-              <VaalsButtonLoading
-                color={color}
-                lightness={lightness}
-                container={containerLeftVisible || containerRightVisible}
-              >
-                <VaalsLoading color={color} lightness={lightness}>
-                  <Loading />
-                </VaalsLoading>
-              </VaalsButtonLoading>
-            )}
-            {containerRightType === 'icon' && (
-              <FeatherIcon
-                icon={containerRightContent}
-                color={(lightness && lightness < 400) || color === 'secondary' ? '#000719' : '#fff'}
-                size="18"
-              />
-            )}
-            {containerRightType === 'text' && <div>{containerRightContent}</div>}
-          </VaalsButtonContainerRight>
-        )}
+        {props.containerRightVisible && <VaalsContainerRight {...props} />}
       </VaalsButton>
     </ThemeWrapper>
   );
