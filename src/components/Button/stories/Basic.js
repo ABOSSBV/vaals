@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
-import { Button, Loading } from 'vaals';
+import { Button, Input, Loading } from 'vaals';
 
 const ButtonBasic = props => {
   return (
@@ -70,22 +70,58 @@ const ButtonContainerRight = props => {
 };
 
 const ButtonLoading = props => {
-  return <Loading />;
+  return (
+    <Button
+      content={text('Label', 'Primary')}
+      color={select(
+        'Type',
+        ['primary', 'primarygray', 'secondary', 'warning', 'positive', 'alert', 'gray'],
+        'primary'
+      )}
+      lightness={select(
+        'Lightness',
+        ['default', '100', '200', '300', '400', '500', '600', '700', '900'],
+        'default'
+      )}
+      loading={boolean('Loading', true)}
+      containerLeftVisible={boolean('Left Container Visible?', false)}
+      containerLeftType={select('Left Container Type', ['icon', 'text'], 'icon')}
+      containerLeftContent={text('Left Container Value', '')}
+      containerRightVisible={boolean('Right Container Visible?', false)}
+      containerRightType={select('Right Container Type', ['icon', 'text'], 'icon')}
+      containerRightContent={text('Right Container Value', '')}
+    />
+  );
 };
 
-const button = storiesOf('Components|Form/Button', module);
+const InputExample = props => {
+  return (
+    <Input
+      label={text('Label', 'Label')}
+      placeholder={text('Placeholder', 'Placeholder')}
+      {...props}
+    />
+  );
+};
+
+const button = storiesOf('Form|Button', module);
 
 button
   .addDecorator(withKnobs)
-  .add('Basic Button', props => <ButtonBasic {...props} />, {
+  .add('Basic', props => <ButtonBasic {...props} />, {
     notes: 'Basic button, containing only text.'
   })
-  .add('Left Container', props => <ButtonContainerLeft {...props} />, {
-    notes: 'Basic button, containing only text.'
+  .add('Container Left', props => <ButtonContainerLeft {...props} />, {
+    notes: 'Button with left container, container can contain both an icon or text.'
   })
-  .add('Right Container', props => <ButtonContainerRight {...props} />, {
-    notes: 'Basic button, containing only text.'
+  .add('Container Right', props => <ButtonContainerRight {...props} />, {
+    notes: 'Button with right container, container can contain both an icon or text.'
   })
-  .add('Loading', props => <ButtonLoading {...props} />, {
+  .add('Loading State', props => <ButtonLoading {...props} />, {
     notes: ''
   });
+
+const input = storiesOf('Form|Input', module);
+input.addDecorator(withKnobs).add('Input', props => <InputExample {...props} />, {
+  notes: ''
+});

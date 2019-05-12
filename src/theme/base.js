@@ -18,6 +18,7 @@ export const base = {
   fontWeightBold: '700',
   space2xs: '4px',
   spaceXs: '8px',
+  spaceS: '10px',
   spaceSm: '12px',
   spaceMd: '16px',
   spaceLg: '24px',

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import FeatherIcon from 'feather-icons-react';
 import { ThemeWrapper } from 'vaals';
+import { Loading } from '../Loading';
 
 export const Button = ({
   content,
@@ -14,7 +15,8 @@ export const Button = ({
   containerLeftContent,
   containerRightVisible,
   containerRightType,
-  containerRightContent
+  containerRightContent,
+  loading
 }) => {
   return (
     <ThemeWrapper>
@@ -25,6 +27,17 @@ export const Button = ({
             lightness={lightness}
             containerLeftType={containerLeftType}
           >
+            {loading && containerLeftVisible && (
+              <VaalsButtonLoading
+                color={color}
+                lightness={lightness}
+                container={containerLeftVisible || containerRightVisible}
+              >
+                <VaalsLoading color={color} lightness={lightness}>
+                  <Loading />
+                </VaalsLoading>
+              </VaalsButtonLoading>
+            )}
             {containerLeftType === 'icon' && (
               <FeatherIcon
                 icon={containerLeftContent}
@@ -39,6 +52,13 @@ export const Button = ({
           containerLeftVisible={containerLeftVisible}
           containerRightVisible={containerRightVisible}
         >
+          {loading && (!containerRightVisible && !containerLeftVisible) && (
+            <VaalsButtonLoading color={color} lightness={lightness}>
+              <VaalsLoading color={color} lightness={lightness}>
+                <Loading />
+              </VaalsLoading>
+            </VaalsButtonLoading>
+          )}
           {content}
         </VaalsButtonContent>
         {containerRightVisible && (
@@ -47,6 +67,17 @@ export const Button = ({
             lightness={lightness}
             containerRightType={containerRightType}
           >
+            {loading && containerRightVisible && (
+              <VaalsButtonLoading
+                color={color}
+                lightness={lightness}
+                container={containerLeftVisible || containerRightVisible}
+              >
+                <VaalsLoading color={color} lightness={lightness}>
+                  <Loading />
+                </VaalsLoading>
+              </VaalsButtonLoading>
+            )}
             {containerRightType === 'icon' && (
               <FeatherIcon
                 icon={containerRightContent}
@@ -109,9 +140,15 @@ const VaalsButton = styled.button`
     transform: scale(0.9);
     opacity: ${({ theme }) => theme.opacityLarge};
   }
+
+  &:focus {
+    border: 2px solid ${({ theme }) => theme['primary']['500']};
+    outline: none;
+  }
 `;
 
 const VaalsButtonContent = styled.div`
+  position: relative;
   padding: 15px 25px;
   padding-top: 15px;
   padding-left: ${props => (props.containerLeftVisible ? '15px' : '25px')};
@@ -119,7 +156,29 @@ const VaalsButtonContent = styled.div`
   padding-right: ${props => (props.containerRightVisible ? '15px' : '25px')};
 `;
 
+const VaalsButtonLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: ${({ theme }) => theme.borderRadius};
+  right: ${({ theme }) => theme.borderRadius};
+  bottom: 0;
+  opacity: 0.85;
+  background: ${({ theme, color, container, lightness }) =>
+    container && lightness != 'default'
+      ? theme[color][parseInt(lightness, 10) + 100]
+      : theme[color][lightness]};
+`;
+
+const VaalsLoading = styled.div`
+  height: 29px;
+  width: 29px;
+`;
+
 const VaalsButtonContainerLeft = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,10 +188,10 @@ const VaalsButtonContainerLeft = styled.div`
   background: ${({ theme, color, lightness }) => theme[color][parseInt(lightness, 10) + 100]};
   border-top-left-radius: ${({ theme }) => theme.borderRadius};
   border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
-  color: #fff;
 `;
 
 const VaalsButtonContainerRight = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
