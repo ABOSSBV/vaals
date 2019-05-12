@@ -1,7 +1,8 @@
+import React from 'react';
 import { addDecorator, configure, addParameters } from '@storybook/react';
 import centered from '@storybook/addon-centered/react';
+import { withInfo } from '@storybook/addon-info';
 import ABOSSTheme from './theme.js';
-import React, { Fragment } from 'react';
 import { GlobalStyles } from './global-style';
 const req = require.context('../src', true, /\.stories\.js$|\/stories\/.*\.js$/);
 
@@ -17,6 +18,11 @@ function withGlobalStyles(storyFn) {
     </React.Fragment>
   );
 }
+addDecorator(
+  withInfo({
+    source: false
+  })
+);
 addDecorator(withGlobalStyles);
 addDecorator(centered);
 addParameters({
