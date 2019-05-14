@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -49,29 +49,29 @@ const VaalsInputContainerBottom = styled.div`
 `;
 
 const VaalsInputLabel = styled.label`
-  padding-left: ${({ theme }) => theme.spaceSm};
+  padding-left: ${({ theme }) => theme.spaceS};
   padding-bottom: ${({ theme }) => theme.space2xs};
   font-family: ${({ theme }) => theme.fontFamily};
-  font-size: ${({ theme }) => theme.fontSizeSm};
+  font-size: ${({ theme }) => theme.fontSizeS};
   font-weight: ${({ theme }) => theme.fontWeightSemiBold};
   color: ${({ theme }) => theme['primarygray']['600']};
 `;
 
 const VaalsInput = styled.input`
-  padding: ${({ theme }) => theme.spaceXs} ${({ theme }) => theme.spaceS};
+  padding: ${({ theme }) => theme.spaceXs} ${({ theme }) => theme.spaceXs};
 
-  border: 2px solid ${({ theme }) => theme['primarygray']['200']};
+  border: 1px solid ${({ theme }) => theme['primarygray']['200']};
   border-radius: ${({ theme }) => theme.borderRadius};
 
   font-family: ${({ theme }) => theme.fontFamily};
-  font-size: ${({ theme }) => theme.fontSizeMd};
+  font-size: ${({ theme }) => theme.fontSizeSm};
   font-weight: ${({ theme }) => theme.fontWeightRegular};
   color: ${({ theme }) => theme['gray']['700']};
 
   transition: all ${({ theme }) => theme.durationFast} ${({ theme }) => theme.transitionDefault};
 
   &:focus {
-    border: 2px solid ${({ theme }) => theme['primarygray']['300']};
+    border: 1px solid ${({ theme }) => theme['primarygray']['300']};
     outline: none;
   }
 `;

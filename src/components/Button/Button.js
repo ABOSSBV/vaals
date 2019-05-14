@@ -77,7 +77,6 @@ const VaalsButton = styled.button`
   }
 
   &:focus {
-    border: 2px solid ${({ theme }) => theme['primary']['500']};
     outline: none;
   }
 `;
