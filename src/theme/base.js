@@ -1,5 +1,6 @@
 export const base = {
   fontFamily: '-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif',
+  fontSizeXs: '9px',
   fontSizeS: '11px',
   fontSizeSm: '13px',
   fontSizeMd: '15px',
