@@ -24,6 +24,8 @@ const ButtonBasic = props => {
 };
 
 const button = storiesOf('Form|Button', module);
+ButtonBasic.defaultProps = Button.defaultProps;
+ButtonBasic.propTypes = Button.propTypes;
 
 button.addDecorator(withKnobs).add('Basic', props => <ButtonBasic {...props} />, {
   notes: 'Basic button, containing only text.'

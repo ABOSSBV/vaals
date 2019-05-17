@@ -1,29 +1,28 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import styled from 'styled-components';
-
-import FeatherIcon from 'feather-icons-react';
 import { ThemeWrapper } from 'vaals';
 import { Loading } from '../Loading';
-import { VaalsContainerLeft, VaalsContainerRight } from './components';
+import { ContainerLeft } from './ContainerLeft';
+import { ContainerRight } from './ContainerRight';
 
 export const Button = props => {
   return (
     <ThemeWrapper>
-      <VaalsButton {...props}>
-        {props.containerLeftVisible && <VaalsContainerLeft {...props} />}
-        <VaalsButtonContent {...props}>
+      <ButtonContainer {...props}>
+        {props.containerLeftVisible && <ContainerLeft {...props} />}
+        <ButtonContent {...props}>
           {props.loading && (!props.containerRightVisible && !props.containerLeftVisible) && (
-            <VaalsButtonLoading {...props}>
-              <VaalsLoading {...props}>
+            <ButtonLoading {...props}>
+              <LoadingContainer {...props}>
                 <Loading />
-              </VaalsLoading>
-            </VaalsButtonLoading>
+              </LoadingContainer>
+            </ButtonLoading>
           )}
           {props.content}
-        </VaalsButtonContent>
-        {props.containerRightVisible && <VaalsContainerRight {...props} />}
-      </VaalsButton>
+        </ButtonContent>
+        {props.containerRightVisible && <ContainerRight {...props} />}
+      </ButtonContainer>
     </ThemeWrapper>
   );
 };
@@ -52,7 +51,7 @@ Button.defaultProps = {
   loading: false
 };
 
-const VaalsButton = styled.button`
+const ButtonContainer = styled.button`
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -81,7 +80,7 @@ const VaalsButton = styled.button`
   }
 `;
 
-const VaalsButtonContent = styled.div`
+const ButtonContent = styled.div`
   position: relative;
   padding: 15px 25px;
   padding: ${({ theme }) => theme.spaceXs};
@@ -93,7 +92,7 @@ const VaalsButtonContent = styled.div`
     props.containerRightVisible ? props.theme.spaceMd : props.theme.spaceLg};
 `;
 
-const VaalsButtonLoading = styled.div`
+const ButtonLoading = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,32 +108,7 @@ const VaalsButtonLoading = styled.div`
       : theme[color][lightness]};
 `;
 
-const VaalsLoading = styled.div`
+const LoadingContainer = styled.div`
   height: 29px;
   width: 29px;
-`;
-
-const VaalsButtonContainerLeft = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: ${props => (props.containerLeftType === 'icon' ? '0' : '0 15px')};
-  min-width: 38px;
-
-  background: ${({ theme, color, lightness }) => theme[color][parseInt(lightness, 10) + 100]};
-  border-top-left-radius: ${({ theme }) => theme.borderRadius};
-  border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
-`;
-
-const VaalsButtonContainerRight = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: ${props => (props.containerRightType === 'icon' ? '0' : '0 15px')};
-  min-width: 38px;
-  background: ${({ theme, color, lightness }) => theme[color][parseInt(lightness, 10) + 100]};
-  border-top-right-radius: ${({ theme }) => theme.borderRadius};
-  border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
 `;

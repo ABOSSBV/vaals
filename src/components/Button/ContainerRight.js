@@ -2,30 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import FeatherIcon from 'feather-icons-react';
 
-import { ThemeWrapper } from 'vaals';
-import { Loading } from '../../Loading';
+import { Loading } from '../Loading';
 
-export const VaalsContainerLeft = props => {
+export const ContainerRight = props => {
   return (
-    <VaalsButtonContainerLeft
+    <ButtonContainerRight
       color={props.color}
       lightness={props.lightness}
-      containerLeftType={props.containerLeftType}
+      containerRightType={props.containerRightType}
     >
-      {props.loading && props.containerLeftVisible && (
-        <VaalsButtonLoading
+      {props.loading && props.containerRightVisible && (
+        <ButtonLoadingContainer
           color={props.color}
           lightness={props.lightness}
           container={props.containerLeftVisible || props.containerRightVisible}
         >
-          <VaalsLoading color={props.color} lightness={props.lightness}>
+          <ButtonLoading color={props.color} lightness={props.lightness}>
             <Loading />
-          </VaalsLoading>
-        </VaalsButtonLoading>
+          </ButtonLoading>
+        </ButtonLoadingContainer>
       )}
-      {props.containerLeftType === 'icon' && (
+      {props.containerRightType === 'icon' && (
         <FeatherIcon
-          icon={props.containerLeftContent}
+          icon={props.containerRightContent}
           color={
             (props.lightness && props.lightness < 400) || props.color === 'secondary'
               ? '#000719'
@@ -34,25 +33,25 @@ export const VaalsContainerLeft = props => {
           size="18"
         />
       )}
-      {props.containerLeftType === 'text' && <div>{props.containerLeftContent}</div>}
-    </VaalsButtonContainerLeft>
+      {props.containerRightType === 'text' && <div>{props.containerRightContent}</div>}
+    </ButtonContainerRight>
   );
 };
 
-const VaalsButtonContainerLeft = styled.div`
+const ButtonContainerRight = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${props => (props.containerLeftType === 'icon' ? '0' : '0 15px')};
+  padding: ${props => (props.containerRightType === 'icon' ? '0' : '0 15px')};
   min-width: 38px;
 
   background: ${({ theme, color, lightness }) => theme[color][parseInt(lightness, 10) + 100]};
-  border-top-left-radius: ${({ theme }) => theme.borderRadius};
-  border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
+  border-top-right-radius: ${({ theme }) => theme.borderRadius};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
 `;
 
-const VaalsButtonLoading = styled.div`
+const ButtonLoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +67,7 @@ const VaalsButtonLoading = styled.div`
       : theme[color][lightness]};
 `;
 
-const VaalsLoading = styled.div`
+const ButtonLoading = styled.div`
   height: 29px;
   width: 29px;
 `;

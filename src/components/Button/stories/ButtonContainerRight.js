@@ -27,6 +27,8 @@ const ButtonContainerRight = props => {
 };
 
 const button = storiesOf('Form|Button', module);
+ButtonContainerRight.defaultProps = Button.defaultProps;
+ButtonContainerRight.propTypes = Button.propTypes;
 
 button
   .addDecorator(withKnobs)

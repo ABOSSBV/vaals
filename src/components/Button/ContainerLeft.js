@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import FeatherIcon from 'feather-icons-react';
 
 import { ThemeWrapper } from 'vaals';
-import { Loading } from '../../Loading';
+import { Loading } from '../Loading';
 
-export const VaalsContainerRight = props => {
+export const ContainerLeft = props => {
   return (
-    <VaalsButtonContainerRight
+    <VaalsButtonContainerLeft
       color={props.color}
       lightness={props.lightness}
-      containerRightType={props.containerRightType}
+      containerLeftType={props.containerLeftType}
     >
-      {props.loading && props.containerRightVisible && (
+      {props.loading && props.containerLeftVisible && (
         <VaalsButtonLoading
           color={props.color}
           lightness={props.lightness}
@@ -23,9 +23,9 @@ export const VaalsContainerRight = props => {
           </VaalsLoading>
         </VaalsButtonLoading>
       )}
-      {props.containerRightType === 'icon' && (
+      {props.containerLeftType === 'icon' && (
         <FeatherIcon
-          icon={props.containerRightContent}
+          icon={props.containerLeftContent}
           color={
             (props.lightness && props.lightness < 400) || props.color === 'secondary'
               ? '#000719'
@@ -34,22 +34,22 @@ export const VaalsContainerRight = props => {
           size="18"
         />
       )}
-      {props.containerRightType === 'text' && <div>{props.containerRightContent}</div>}
-    </VaalsButtonContainerRight>
+      {props.containerLeftType === 'text' && <div>{props.containerLeftContent}</div>}
+    </VaalsButtonContainerLeft>
   );
 };
 
-const VaalsButtonContainerRight = styled.div`
+const VaalsButtonContainerLeft = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${props => (props.containerRightType === 'icon' ? '0' : '0 15px')};
+  padding: ${props => (props.containerLeftType === 'icon' ? '0' : '0 15px')};
   min-width: 38px;
 
   background: ${({ theme, color, lightness }) => theme[color][parseInt(lightness, 10) + 100]};
-  border-top-right-radius: ${({ theme }) => theme.borderRadius};
-  border-bottom-right-radius: ${({ theme }) => theme.borderRadius};
+  border-top-left-radius: ${({ theme }) => theme.borderRadius};
+  border-bottom-left-radius: ${({ theme }) => theme.borderRadius};
 `;
 
 const VaalsButtonLoading = styled.div`

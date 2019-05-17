@@ -27,6 +27,8 @@ const ButtonContainerLeft = props => {
 };
 
 const button = storiesOf('Form|Button', module);
+ButtonContainerLeft.defaultProps = Button.defaultProps;
+ButtonContainerLeft.propTypes = Button.propTypes;
 
 button.addDecorator(withKnobs).add('Container Left', props => <ButtonContainerLeft {...props} />, {
   notes: 'Button with left container, container can contain both an icon or text.'
