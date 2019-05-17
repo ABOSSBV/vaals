@@ -7,37 +7,35 @@ import { Loading } from '../../Loading';
 
 export const VaalsContainerLeft = props => {
   return (
-    <ThemeWrapper>
-      <VaalsButtonContainerLeft
-        color={props.color}
-        lightness={props.lightness}
-        containerLeftType={props.containerLeftType}
-      >
-        {props.loading && props.containerLeftVisible && (
-          <VaalsButtonLoading
-            color={props.color}
-            lightness={props.lightness}
-            container={props.containerLeftVisible || props.containerRightVisible}
-          >
-            <VaalsLoading color={props.color} lightness={props.lightness}>
-              <Loading />
-            </VaalsLoading>
-          </VaalsButtonLoading>
-        )}
-        {props.containerLeftType === 'icon' && (
-          <FeatherIcon
-            icon={props.containerLeftContent}
-            color={
-              (props.lightness && props.lightness < 400) || props.color === 'secondary'
-                ? '#000719'
-                : '#fff'
-            }
-            size="18"
-          />
-        )}
-        {props.containerLeftType === 'text' && <div>{props.containerLeftContent}</div>}
-      </VaalsButtonContainerLeft>
-    </ThemeWrapper>
+    <VaalsButtonContainerLeft
+      color={props.color}
+      lightness={props.lightness}
+      containerLeftType={props.containerLeftType}
+    >
+      {props.loading && props.containerLeftVisible && (
+        <VaalsButtonLoading
+          color={props.color}
+          lightness={props.lightness}
+          container={props.containerLeftVisible || props.containerRightVisible}
+        >
+          <VaalsLoading color={props.color} lightness={props.lightness}>
+            <Loading />
+          </VaalsLoading>
+        </VaalsButtonLoading>
+      )}
+      {props.containerLeftType === 'icon' && (
+        <FeatherIcon
+          icon={props.containerLeftContent}
+          color={
+            (props.lightness && props.lightness < 400) || props.color === 'secondary'
+              ? '#000719'
+              : '#fff'
+          }
+          size="18"
+        />
+      )}
+      {props.containerLeftType === 'text' && <div>{props.containerLeftContent}</div>}
+    </VaalsButtonContainerLeft>
   );
 };
 

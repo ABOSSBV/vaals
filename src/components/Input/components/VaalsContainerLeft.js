@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import FeatherIcon from 'feather-icons-react';
 
@@ -9,7 +9,7 @@ export const VaalsContainerLeft = props => {
     <ThemeWrapper>
       <VaalsInputContainerLeft {...props}>
         {props.containerType === 'icon' && <FeatherIcon icon={props.containerContent} size="16" />}
-        {props.containerType === 'text' && <div>{props.containerContent}</div>}
+        {props.containerType === 'text' && <Fragment>{props.containerContent}</Fragment>}
       </VaalsInputContainerLeft>
     </ThemeWrapper>
   );
@@ -17,13 +17,12 @@ export const VaalsContainerLeft = props => {
 
 const VaalsInputContainerLeft = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: ${({ theme }) => theme.spaceXs} ${({ theme }) => theme.spaceXs};
   padding-right: 0;
   min-width: ${({ theme }) => theme.borderRadius};
-
-  background: #fff;
 
   font-family: ${({ theme }) => theme.fontFamily};
   font-size: ${({ theme }) => theme.fontSizeXs};

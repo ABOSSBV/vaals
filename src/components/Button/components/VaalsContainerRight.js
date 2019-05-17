@@ -7,37 +7,35 @@ import { Loading } from '../../Loading';
 
 export const VaalsContainerRight = props => {
   return (
-    <ThemeWrapper>
-      <VaalsButtonContainerRight
-        color={props.color}
-        lightness={props.lightness}
-        containerRightType={props.containerRightType}
-      >
-        {props.loading && props.containerRightVisible && (
-          <VaalsButtonLoading
-            color={props.color}
-            lightness={props.lightness}
-            container={props.containerLeftVisible || props.containerRightVisible}
-          >
-            <VaalsLoading color={props.color} lightness={props.lightness}>
-              <Loading />
-            </VaalsLoading>
-          </VaalsButtonLoading>
-        )}
-        {props.containerRightType === 'icon' && (
-          <FeatherIcon
-            icon={props.containerRightContent}
-            color={
-              (props.lightness && props.lightness < 400) || props.color === 'secondary'
-                ? '#000719'
-                : '#fff'
-            }
-            size="18"
-          />
-        )}
-        {props.containerRightType === 'text' && <div>{props.containerRightContent}</div>}
-      </VaalsButtonContainerRight>
-    </ThemeWrapper>
+    <VaalsButtonContainerRight
+      color={props.color}
+      lightness={props.lightness}
+      containerRightType={props.containerRightType}
+    >
+      {props.loading && props.containerRightVisible && (
+        <VaalsButtonLoading
+          color={props.color}
+          lightness={props.lightness}
+          container={props.containerLeftVisible || props.containerRightVisible}
+        >
+          <VaalsLoading color={props.color} lightness={props.lightness}>
+            <Loading />
+          </VaalsLoading>
+        </VaalsButtonLoading>
+      )}
+      {props.containerRightType === 'icon' && (
+        <FeatherIcon
+          icon={props.containerRightContent}
+          color={
+            (props.lightness && props.lightness < 400) || props.color === 'secondary'
+              ? '#000719'
+              : '#fff'
+          }
+          size="18"
+        />
+      )}
+      {props.containerRightType === 'text' && <div>{props.containerRightContent}</div>}
+    </VaalsButtonContainerRight>
   );
 };
 

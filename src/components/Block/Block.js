@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ThemeWrapper } from 'vaals';
 
@@ -12,6 +13,16 @@ export const Block = ({ children }) => {
   );
 };
 
+Block.propTypes = {
+  infoVisible: propTypes.bool,
+  infoTitle: propTypes.string,
+  infoContent: propTypes.string
+};
+
+Block.defaultProps = {
+  infoVisible: false
+};
+
 const VaalsBlock = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,6 +30,7 @@ const VaalsBlock = styled.div`
   align-items: stretch;
   width: 100%;
   height: 100%;
+  padding: ${({ theme }) => theme.spaceSm} ${({ theme }) => theme.spaceMd};
 
   background: ${({ theme }) => theme['gray']['100']};
   border: 1px solid ${({ theme }) => theme['gray']['200']};
@@ -31,11 +43,15 @@ const VaalsBlock = styled.div`
 `;
 
 const VaalsBlockContainer = styled.div`
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+  flex: 1;
+  width: 100%;
   height: 100%;
-  margin: ${({ theme }) => theme.spaceSm} ${({ theme }) => theme.spaceMd};
 `;

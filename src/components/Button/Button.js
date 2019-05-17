@@ -84,10 +84,13 @@ const VaalsButton = styled.button`
 const VaalsButtonContent = styled.div`
   position: relative;
   padding: 15px 25px;
-  padding-top: 15px;
-  padding-left: ${props => (props.containerLeftVisible ? '15px' : '25px')};
-  padding-bottom: 15px;
-  padding-right: ${props => (props.containerRightVisible ? '15px' : '25px')};
+  padding: ${({ theme }) => theme.spaceXs};
+  padding-top: ${({ theme }) => theme.spaceMd};
+  padding-left: ${props =>
+    props.containerLeftVisible ? props.theme.spaceMd : props.theme.spaceLg};
+  padding-bottom: ${({ theme }) => theme.spaceMd};
+  padding-right: ${props =>
+    props.containerRightVisible ? props.theme.spaceMd : props.theme.spaceLg};
 `;
 
 const VaalsButtonLoading = styled.div`
