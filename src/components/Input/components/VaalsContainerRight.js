@@ -6,12 +6,10 @@ import { ThemeWrapper } from 'vaals';
 
 export const VaalsContainerRight = props => {
   return (
-    <ThemeWrapper>
-      <VaalsInputContainerRight {...props}>
-        {props.containerType === 'icon' && <FeatherIcon icon={props.containerContent} size="16" />}
-        {props.containerType === 'text' && <div>{props.containerContent}</div>}
-      </VaalsInputContainerRight>
-    </ThemeWrapper>
+    <VaalsInputContainerRight {...props}>
+      {props.containerType === 'icon' && <FeatherIcon icon={props.containerContent} size="16" />}
+      {props.containerType === 'text' && <div>{props.containerContent}</div>}
+    </VaalsInputContainerRight>
   );
 };
 
@@ -27,7 +25,7 @@ const VaalsInputContainerRight = styled.div`
   background: #fff;
 
   font-family: ${({ theme }) => theme.fontFamily};
-  font-size: ${({ theme }) => theme.fontSizeXs};
-  font-weight: ${({ theme }) => theme.fontWeightSemiBold};
+  font-size: ${({ theme }) => theme.fontSizeS};
+  font-weight: ${({ theme }) => theme.fontWeightMedium};
   color: ${({ theme }) => theme['gray']['400']};
 `;

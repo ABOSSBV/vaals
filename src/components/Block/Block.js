@@ -3,11 +3,12 @@ import propTypes from 'prop-types';
 import styled from 'styled-components';
 import { ThemeWrapper } from 'vaals';
 
-export const Block = ({ children }) => {
+export const Block = props => {
   return (
     <ThemeWrapper>
       <VaalsBlock>
-        <VaalsBlockContainer>{children}</VaalsBlockContainer>
+        {props.infoVisible && <div>info</div>}
+        <VaalsBlockContainer>{props.children}</VaalsBlockContainer>
       </VaalsBlock>
     </ThemeWrapper>
   );

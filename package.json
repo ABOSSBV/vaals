@@ -1,6 +1,6 @@
 {
   "name": "vaals",
-  "version": "0.0.33",
+  "version": "0.0.35",
   "description": "ABOSS Design System",
   "repository": {
     "type": "git",
@@ -53,6 +53,7 @@
     "feather-icons-react": "^0.3.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-phone-number-input": "^2.3.12"
+    "react-phone-number-input": "^2.3.12",
+    "react-select": "^2.4.3"
   }
 }

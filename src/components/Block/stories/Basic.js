@@ -1,13 +1,22 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Block } from '../';
-import { Input } from 'vaals';
+import { Input, Select } from 'vaals';
 
 const block = storiesOf('Form|Block', module);
 
 block
   .addDecorator(withKnobs)
+  .add(
+    'Block w/ text',
+    props => {
+      return <Block>Yo bro, whaddup</Block>;
+    },
+    {
+      notes: ''
+    }
+  )
   .add(
     'Block w/ input',
     props => {
@@ -16,6 +25,7 @@ block
           <Input
             label={text('Label', 'Label')}
             placeholder={text('Placeholder', 'Placeholder')}
+            loadingVisible={boolean('info', true)}
             {...props}
           />
         </Block>
@@ -26,9 +36,13 @@ block
     }
   )
   .add(
-    'Block w/ text',
+    'Block w/ select',
     props => {
-      return <Block>Yo bro, whaddup</Block>;
+      return (
+        <Block>
+          <Select {...props} />
+        </Block>
+      );
     },
     {
       notes: ''
